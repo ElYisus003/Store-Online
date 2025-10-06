@@ -1,0 +1,41 @@
+.container{
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.buttons-users {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.login{
+  display: flex;
+  margin-bottom: 15px;
+  justify-content: center;
+}
+
+.image{
+  display: flex;
+  width: 200px;
+  border-radius: 10px;
+  justify-content: center;
+}

@@ -8,7 +8,6 @@ import { CommonModule, NgForOf } from '@angular/common';
   styleUrl: './header.css'
 })
 export class Header {
-  // public headerOptions: string[] = ['Lo Nuevo', 'Hombre', 'Mujer', 'Niño/a', 'Ofertas', 'SNKRS'];
   public headerOptions: { name: string, subOptions: string[] }[] = [
     { name: 'Lo Nuevo', subOptions: ['Novedades', 'Lanzamientos', 'Tendencias'] },
     { name: 'Hombre', subOptions: ['Calzado', 'Ropa', 'Accesorios'] },
