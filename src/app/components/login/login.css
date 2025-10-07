@@ -1,9 +1,30 @@
+.page-container{
+  display: flex;
+  min-height: 100vh;
+}
+
 .container{
   width: 300px;
+  height: auto;
   margin: 100px auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.container h2 {
+  text-align: center;
+}
+
+.image {
+  flex: 0.6;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .form-group {
@@ -30,12 +51,5 @@ input {
 .login{
   display: flex;
   margin-bottom: 15px;
-  justify-content: center;
-}
-
-.image{
-  display: flex;
-  width: 200px;
-  border-radius: 10px;
   justify-content: center;
 }
