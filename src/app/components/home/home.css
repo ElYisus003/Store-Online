@@ -1,3 +1,4 @@
+/* Formulario */
 .container{
     width: 700px;
     margin: 30px auto;
@@ -17,3 +18,42 @@
     justify-content: center;
 }
 
+/* Cards */
+.product-card-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+.product-card-container h2{
+  text-align: center;
+  margin: 50px;
+}
+
+.product-card {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center;
+  gap: 40px;
+}
+
+.product-item {
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden; 
+  display: flex;
+  flex-direction: column;
+}
+
+.product-details{
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+}
+
+.product-price{
+  font-size: larger;
+  font-weight: bold;
+  color:blue;
+}

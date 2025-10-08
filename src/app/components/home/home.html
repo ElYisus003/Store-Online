@@ -1,5 +1,6 @@
 <app-header></app-header>
 <main>
+    <!-- Formulario -->
     <div class="container">
         <h2>Agregar nuevo producto</h2>
         <form>
@@ -30,26 +31,22 @@
                 <button type="button" class="btn btn-outline-secondary" (click)="onSaveRecord()">Save article</button>
             </div>
         </form>
-        <div>
-            <title>Listado de productos</title>
-        </div>
+    <!-- Cards -->
     </div>
-    <div>
-        <table>
-            <thead>
-                <!-- Columnas -->
-                <tr>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Price</th>
-                </tr>
-            </thead>
-            <!-- Registros -->
-            <tbody>
-                <tr *ngFor="let product of productList">
-                    <td>{{product.name}}</td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="product-card-container">
+        <h2>Nuestros Productos</h2>
+        <div class="product-card">
+          <div *ngFor="let product of productList; let i = index" class="product-item">
+            
+            <img [src]="'/recursos/' + product.photo.split('\\').pop()"  class="product-image">
+
+            <div class="product-details">
+              <h3 class="product-name">{{ product.name }}</h3>
+              <label class="product-description">{{ product.description }}</label>
+              <label class="product-price">${{ product.price }}</label>
+              <button type="submit" class="btn btn-danger" (click)="onDeleteRecord(i)">Eliminar</button>
+            </div>
+          </div>
+        </div>
     </div>
 </main>

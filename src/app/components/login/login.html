@@ -5,25 +5,27 @@
   </div>
   <div class="container">
       <h2>Login</h2>
+      <label *ngIf="userType=='admin'" class="user">Administrador</label>
+      <label *ngIf="userType=='user'" class="user">Usuario</label>
       <form>
           <div class="form-group" *ngIf="userType=='admin'">
             <label for="username">ID:</label>
-            <input type="text" id="id" name="id" ngModel required>
+            <input type="text" id="id" name="id" [(ngModel)]="loginObj.id" ngModel required>
           </div>
-          <div class="form-group">
-            <label for="username">Correo:</label>
-            <input type="text" id="correo" name="correo" ngModel required>
+          <div class="form-group" *ngIf="userType=='user'">
+            <label for="Correo">Correo:</label>
+            <input type="text" id="correo" name="correo" [(ngModel)]="loginObj.correo" ngModel required>
           </div>
           <div class="form-group">  
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" nmModel required>
+            <input type="password" id="password" name="password" [(ngModel)]="loginObj.password" nmModel required>
           </div>
           <div class="buttons-users">
             <button type="button" class="btn btn-primary" (click)="setUserType('admin')">Administrador</button>
             <button type="button" class="btn btn-secondary" (click)="setUserType('user')">Usuario</button>
           </div>
           <div class="login">
-            <button type="submit" class="btn btn-danger" [disabled]>Login</button>
+            <button type="submit" class="btn btn-danger" (click)="onLogin()" [routerLink]="['/home', userType]" [disabled]>Login</button>
           </div>
           <div class="home">
             <button type="button" class="btn btn-outline-info" routerLink="/home">Home</button>
@@ -31,44 +33,3 @@
       </form>
   </div>
 </section>
-
-
-
-<!-- <section class="login-page-container">
-
-  <div class="image-panel">
-    <img src="/recursos/admin.jpeg" *ngIf="userType=='admin'">
-    <img src="/recursos/user.jpeg" *ngIf="userType=='user'">
-  </div>
-
-  <div class="form-panel">
-    <div class="container">
-      <h2>Login</h2>
-      <form>
-          <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" ngModel required>
-          </div>
-          <div class="form-group" *ngIf="userType=='admin'">
-            <label for="id">ID:</label>
-            <input type="text" id="id" name="id" ngModel required>
-          </div>
-          <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" ngModel required>
-          </div>
-          <div class="buttons-users">
-            <button type="button" class="btn btn-primary" (click)="setUserType('admin')">Administrador</button>
-            <button type="button" class="btn btn-secondary" (click)="setUserType('user')">Usuario</button>
-          </div>
-          <div class="login">
-            <button type="submit" class="btn btn-danger" [disabled]>Login</button>
-          </div>
-          <div class="home">
-            <button type="button" class="btn btn-outline-info" routerLink="/home">Home</button>
-          </div>
-      </form>
-    </div>
-  </div>
-
-</section> -->
