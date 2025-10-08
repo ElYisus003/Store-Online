@@ -25,10 +25,7 @@
             <button type="button" class="btn btn-secondary" (click)="setUserType('user')">Usuario</button>
           </div>
           <div class="login">
-            <button type="submit" class="btn btn-danger" (click)="onLogin()" [routerLink]="['/home', userType]" [disabled]>Login</button>
-          </div>
-          <div class="home">
-            <button type="button" class="btn btn-outline-info" routerLink="/home">Home</button>
+            <button type="submit" class="btn btn-danger" (click)="onLogin()" [disabled]>Login</button>
           </div>
       </form>
   </div>

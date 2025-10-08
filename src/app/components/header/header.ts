@@ -18,7 +18,6 @@ export class Header {
   ]
   public headerIcons: string[] = ['<i class="bi bi-heart"></i>', '<i class="bi bi-bag-check-fill"></i>', '<i class="bi bi-box-arrow-in-right"></i>'];
 
-  // Declaración de las cards
   articleObj = {
     photo: '',
     name: '',

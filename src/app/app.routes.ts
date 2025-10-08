@@ -8,14 +8,6 @@ import { Footer } from './components/footer/footer';
 import { Vartest } from './components/vartest/vartest';
 import { NgModule } from '@angular/core';
 
-// @NgModule({
-//     imports: [RouterModule, forRoot(routes)],
-//     exports:[RouterModule]
-// })
-// function forRoot(routes: Routes): any[] | import("@angular/core").Type<any> | import("@angular/core").ModuleWithProviders<{}> {
-//     throw new Error('Function not implemented.');
-// }
-
 export const routes: Routes = [
     {
         path: '',

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Header } from '../header/header';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,8 @@ import { CommonModule } from '@angular/common';
 })
 
 export class Home implements OnInit{
+  isAdmin = false;
+
   productObj: any ={
     photo:'',
     name:'',
@@ -19,7 +22,13 @@ export class Home implements OnInit{
   }
 
   productList: any =[];
-  userType: any;
+
+  constructor(private route: ActivatedRoute) {
+    const userType = this.route.snapshot.paramMap.get('userType');
+    if (userType === 'admin') {
+      this.isAdmin = true;
+    }
+  }
 
   ngOnInit(): void {
     var data = localStorage.getItem('product');

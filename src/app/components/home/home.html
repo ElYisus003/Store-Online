@@ -1,7 +1,7 @@
 <app-header></app-header>
 <main>
     <!-- Formulario -->
-    <div class="container">
+    <div class="container" *ngIf="isAdmin">
         <h2>Agregar nuevo producto</h2>
         <form>
             <div class="mb-3">
@@ -44,7 +44,7 @@
               <h3 class="product-name">{{ product.name }}</h3>
               <label class="product-description">{{ product.description }}</label>
               <label class="product-price">${{ product.price }}</label>
-              <button type="submit" class="btn btn-danger" (click)="onDeleteRecord(i)">Eliminar</button>
+              <button type="submit" class="btn btn-danger" (click)="onDeleteRecord(i)" *ngIf="isAdmin">Eliminar</button>
             </div>
           </div>
         </div>

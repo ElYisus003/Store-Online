@@ -26,10 +26,10 @@ export class Login {
 
   onLogin(){
     if(this.loginObj.id=='admin123' && this.loginObj.password=='123'){
-      this.router.navigateByUrl("home");
+      this.router.navigate(['home', 'admin']);
     }
-    if(this.loginObj.correo=='user123' && this.loginObj.password=='123'){
-      this.router.navigateByUrl("home");
+    else if(this.loginObj.correo=='user@prueba.com' && this.loginObj.password=='123'){
+      this.router.navigate(['home', 'user']);
     }
     else{
       alert("wrong credentials");
