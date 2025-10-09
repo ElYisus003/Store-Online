@@ -10,8 +10,6 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './login.css'
 })
 export class Login {
-  public userType: string = 'user';
-  
   loginObj: any = {
     correo: '',
     password: '',
@@ -20,10 +18,13 @@ export class Login {
 
   router=inject(Router);
 
+  // Tipo de usuario que está ingresando
+  public userType: string = 'user';
   setUserType(type: string){
     this.userType = type;
   }
 
+  // Logeo
   onLogin(){
     if(this.loginObj.id=='admin123' && this.loginObj.password=='123'){
       this.router.navigate(['home', 'admin']);

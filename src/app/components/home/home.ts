@@ -12,7 +12,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class Home implements OnInit{
-  isAdmin = false;
 
   productObj: any ={
     photo:'',
@@ -23,6 +22,8 @@ export class Home implements OnInit{
 
   productList: any =[];
 
+  // Comprobar el usuario con el que se ingresó
+  isAdmin = false;
   constructor(private route: ActivatedRoute) {
     const userType = this.route.snapshot.paramMap.get('userType');
     if (userType === 'admin') {
@@ -30,13 +31,16 @@ export class Home implements OnInit{
     }
   }
 
+  // Función para recuperar los datos de los productos
   ngOnInit(): void {
     var data = localStorage.getItem('product');
     if (data) {
       this.productList = JSON.parse(data);
     }
   }
+
   
+  // Función para guardar productos
   onSaveRecord(){
     this.productList.push(this.productObj);
     localStorage.setItem('product', JSON.stringify(this.productList));
@@ -50,6 +54,7 @@ export class Home implements OnInit{
     };
   }
 
+  // Función para borrar producto
   onDeleteRecord(index: number) {
     this.productList.splice(index, 1);
     
