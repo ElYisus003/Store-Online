@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { Header } from '../header/header';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { Iisproductos } from '../../models/is.Model';
+import { Productos } from '../../services/productos';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +14,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class Home implements OnInit{
+
+  productos: Iisproductos [] = [];
 
   productObj: any ={
     photo:'',
@@ -24,15 +28,17 @@ export class Home implements OnInit{
 
   // Comprobar el usuario con el que se ingresó
   isAdmin = false;
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private Productos: Productos) {
     const userType = this.route.snapshot.paramMap.get('userType');
-    if (userType === 'admin') {
+    if (userType == 'admin') {
       this.isAdmin = true;
     }
   }
 
   // Función para recuperar los datos de los productos
   ngOnInit(): void {
+    this.productos = this.Productos.obtenerProductos();
+
     var data = localStorage.getItem('product');
     if (data) {
       this.productList = JSON.parse(data);

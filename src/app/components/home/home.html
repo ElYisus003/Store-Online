@@ -6,47 +6,52 @@
         <form>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Enter your image</label>
-                <input class="form-control" type="file" id="formFile" name="photo" accept="recursos/*" [(ngModel)]="productObj.photo">
+                <input class="form-control" type="file" id="formFile" name="photo" accept="recursos/*"
+                    [(ngModel)]="productObj.photo">
             </div>
-            
+
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Name</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" name="name" placeholder="Enter your name" [(ngModel)]="productObj.name">
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="name"
+                    placeholder="Enter your name" [(ngModel)]="productObj.name">
             </div>
-            
+
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Description</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" name="description" placeholder="Enter your description" [(ngModel)]="productObj.description">
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="description"
+                    placeholder="Enter your description" [(ngModel)]="productObj.description">
             </div>
-            
+
             <div>
                 <label for="">Price</label> <br>
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text">$</span>
-                <input type="text" class="form-control" name="price" aria-label="Amount (to the nearest dollar)" [(ngModel)]="productObj.price">
+                <input type="text" class="form-control" name="price" aria-label="Amount (to the nearest dollar)"
+                    [(ngModel)]="productObj.price">
                 <span class="input-group-text">.00</span>
             </div>
             <div class="button-save">
                 <button type="button" class="btn btn-outline-secondary" (click)="onSaveRecord()">Save article</button>
             </div>
         </form>
-    <!-- Cards -->
+        <!-- Cards -->
     </div>
     <div class="product-card-container">
         <h2>Nuestros Productos</h2>
         <div class="product-card">
-          <div *ngFor="let product of productList; let i = index" class="product-item">
-            
-            <img [src]="'/recursos/' + product.photo.split('\\').pop()"  class="product-image">
+            <div *ngFor="let producto of productos; let i = index" class="product-item">
 
-            <div class="product-details">
-              <h3 class="product-name">{{ product.name }}</h3>
-              <label class="product-description">{{ product.description }}</label>
-              <label class="product-price">${{ product.price }}</label>
-              <button type="submit" class="btn btn-danger" (click)="onDeleteRecord(i)" *ngIf="isAdmin">Eliminar</button>
+                <img [src]="producto.photo">
+
+                <div class="product-details">
+                    <h3 class="product-name">{{ producto.name }}</h3>
+                    <label class="product-description">{{ producto.description }}</label>
+                    <label class="product-price">${{ producto.price }}</label>
+                    <!-- <button type="submit" class="btn btn-danger" (click)="onDeleteRecord(i)"
+                        *ngIf="isAdmin">Eliminar</button> -->
+                </div>
             </div>
-          </div>
         </div>
     </div>
 </main>
