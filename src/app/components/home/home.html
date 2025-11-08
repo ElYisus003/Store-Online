@@ -42,12 +42,12 @@
         <div class="product-card">
             <div *ngFor="let producto of productos; let i = index" class="product-item">
 
-                <img [src]="producto.photo">
+                <img [src]="producto.Foto">
 
                 <div class="product-details">
-                    <h3 class="product-name">{{ producto.name }}</h3>
-                    <label class="product-description">{{ producto.description }}</label>
-                    <label class="product-price">${{ producto.price }}</label>
+                    <h3 class="product-name">{{ producto.Nombre }}</h3>
+                    <label class="product-description">{{ producto.Descripcion }}</label>
+                    <label class="product-price">${{ producto.Precio }}</label>
                     <!-- <button type="submit" class="btn btn-danger" (click)="onDeleteRecord(i)"
                         *ngIf="isAdmin">Eliminar</button> -->
                 </div>

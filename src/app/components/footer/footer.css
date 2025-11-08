@@ -1,9 +1,8 @@
 .footer-container {
-  padding: 2rem;
-  font-family: Arial, sans-serif;
+  padding: 20px;
   display: flex;
   justify-content: center;
-  gap: 20rem;
+  gap: 200px;
   
 }
 
@@ -13,12 +12,12 @@
 }
 
 .info-tienda p {
-  font-size: 0.9rem;
-  margin: 0.5rem 0;
+  font-size: medium;
+  margin: 8px;
 }
 
 .nombres p {
-  font-size: 0.85rem;
-  margin: 0.25rem 0;
+  font-size: medium;
+  margin: 6px;
   font-weight: 500;
 }
