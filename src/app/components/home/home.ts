@@ -41,13 +41,9 @@ export class Home implements OnInit{
   cargarProductos(): void {    
     this.Productos.obtenerProductos().subscribe({
       next: (data) => {
-        // Cuando los datos lleguen, los asignamos a la variable local
         this.productos = data;
-        console.log('Productos cargados desde el backend:', this.productos);
       },
-      error: (err) => {
-        // Manejo de error en caso de que el backend no responda
-        console.error('Error al cargar productos:', err);
+      error: () => {
         alert('No se pudo conectar al backend.');
       }
     });

@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { Productos } from '../../services/productos';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,8 @@ export class Login {
 
   router=inject(Router);
 
+  productoService = inject(Productos);
+
   // Tipo de usuario que está ingresando
   public userType: string = 'user';
   setUserType(type: string){
@@ -26,15 +29,35 @@ export class Login {
 
   // Logeo
   onLogin(){
-    if(this.loginObj.id=='admin123' && this.loginObj.password=='123'){
-      this.router.navigate(['home', 'admin']);
-    }
-    else if(this.loginObj.correo=='user@prueba.com' && this.loginObj.password=='123'){
-      this.router.navigate(['home', 'user']);
-    }
-    else{
-      alert("wrong credentials");
-    }
+    this.productoService.obtenerClientes().subscribe({
+      next: (listaUsuarios) => {        
+        let usuarioEncontrado = null;
+
+        if (this.userType == 'admin') {
+          usuarioEncontrado = listaUsuarios.find(user => 
+            user.rol == 'admin' && 
+            user.ID == this.loginObj.id && 
+            user.Contraseña == this.loginObj.password
+          );
+        
+        } else if (this.userType == 'user') {
+          usuarioEncontrado = listaUsuarios.find(user =>
+            user.rol == 'cliente' &&
+            user.Correo == this.loginObj.correo &&
+            user.Contraseña == this.loginObj.password
+          );
+        }
+
+        if (usuarioEncontrado) {
+          this.router.navigate(['home', this.userType]);
+        } else {
+          alert("Credenciales incorrectas");
+        }
+      },
+      error: () => {
+        alert('No se pudo conectar al backend para verificar usuarios.');
+      }
+    });
   }
 
 }
