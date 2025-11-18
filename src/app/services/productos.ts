@@ -10,7 +10,7 @@ import { Iisproductos } from '../models/is.Model';
 export class Productos {
   private http = inject(HttpClient);
 
-  private apiUrl = 'http://192.168.1.14:3000';
+  private apiUrl = 'http://localhost:3000';
 
   obtenerProductos(): Observable<Iisproductos[]> {
     return this.http.get<Iisproductos[]>(`${this.apiUrl}/OArt`);
