@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Header } from '../header/header';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Iisproductos } from '../../models/is.Model';
 import { Productos } from '../../services/productos';
 
@@ -26,10 +26,27 @@ export class Home implements OnInit{
 
   // Comprobar el usuario con el que se ingresó
   isAdmin = false;
-  constructor(private route: ActivatedRoute, private Productos: Productos) {
+  constructor(private route: ActivatedRoute, private Productos: Productos, private router: Router) {
     const userType = this.route.snapshot.paramMap.get('userType');
     if (userType == 'admin') {
       this.isAdmin = true;
+    }
+
+    this.verificarSesion();
+  }
+
+  verificarSesion() {
+    const sesionActiva = localStorage.getItem('userType');
+
+    if (!sesionActiva) {
+      this.router.navigate(['/login']);
+      return; // Detenemos la ejecución aquí
+    }
+
+    if (sesionActiva === 'admin') {
+      this.isAdmin = true;
+    } else {
+      this.isAdmin = false;
     }
   }
 

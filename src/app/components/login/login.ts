@@ -49,6 +49,8 @@ export class Login {
         }
 
         if (usuarioEncontrado) {
+          localStorage.setItem('userType', this.userType);
+          localStorage.setItem('userData', JSON.stringify(usuarioEncontrado));
           this.router.navigate(['home', this.userType]);
         } else {
           alert("Credenciales incorrectas");

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule, NgForOf } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +17,12 @@ export class Header {
     { name: 'Ofertas', subOptions: ['Descuentos', 'Promociones Especiales'] },
     { name: 'SNKRS', subOptions: ['Lanzamientos Exclusivos', 'Colecciones'] }
   ]
-  public headerIcons: string[] = ['<i class="bi bi-heart"></i>', '<i class="bi bi-bag-check-fill"></i>', '<i class="bi bi-box-arrow-in-right"></i>'];
+  // public headerIcons: string[] = ['<i class="bi bi-heart"></i>', '<i class="bi bi-bag-check-fill"></i>', '<i class="bi bi-box-arrow-in-right"></i>'];
+  public headerIcons: { html: string, accion: string }[] = [
+    { html: '<i class="bi bi-heart"></i>', accion: 'favorites' },
+    { html: '<i class="bi bi-bag-check-fill"></i>', accion: 'cart' },
+    { html: '<i class="bi bi-box-arrow-in-right"></i>', accion: 'logout' }
+  ];
 
   articleObj = {
     photo: '',
@@ -27,5 +33,20 @@ export class Header {
   }
 
   articleList : any = [];
+
+  router = inject(Router);
+
+  ejecutarAccion(accion: string) {
+    if (accion == 'logout') {
+      this.logOut();
+    }
+  }
+
+  logOut() {
+    localStorage.removeItem('userType');
+    localStorage.removeItem('userData');
+
+    this.router.navigate(['/login']);
+  }
 
 }
